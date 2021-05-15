@@ -1,0 +1,9 @@
+{
+  "Id": "TileCount",
+  "DisplayName": "TileCount",
+  "Author": "HYONSU",
+  "Version": "0.0.3",
+  "AssemblyName": "TileCount.dll",
+  "EntryMethod": "TileCount.Main.Load",
+  "Repository": ""
+}
