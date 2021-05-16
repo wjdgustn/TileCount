@@ -7,7 +7,7 @@ namespace TileCount.MainPatch {
 
         void OnGUI() {
             GUIStyle style = GUI.skin.GetStyle("TileCount_text");
-            style.fontSize = (int) 50.0f;
+            style.fontSize = Main.Settings.TextSize;
             style.font = RDString.GetFontDataForLanguage(RDString.language).font;
             style.normal.textColor = Color.white;
 
