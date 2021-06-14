@@ -2,7 +2,7 @@
   "Id": "TileCount",
   "DisplayName": "TileCount",
   "Author": "HYONSU",
-  "Version": "0.0.4",
+  "Version": "0.0.5",
   "AssemblyName": "TileCount.dll",
   "EntryMethod": "TileCount.Main.Load",
   "Repository": ""

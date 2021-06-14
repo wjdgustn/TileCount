@@ -13,9 +13,11 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DefineConstants>RELEASE</DefineConstants>
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DefineConstants>DEBUG</DefineConstants>
     <OutputPath>bin\Debug\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
@@ -232,6 +234,9 @@
     </Reference>
     <Reference Include="UnityModManager, Version=0.23.2.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\..\..\Steam\steamapps\common\A Dance of Fire and Ice\A Dance of Fire and Ice_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityModManager, Version=0.23.4.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\Steam\steamapps\common\A Dance of Fire and Ice\A Dance of Fire and Ice_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

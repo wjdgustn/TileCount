@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace TileCount.MainPatch {
     public class Text : MonoBehaviour {
-        public static string Content = "Wa sans!";
-
+        public static string Content = "";
+        
         void OnGUI() {
-            GUIStyle style = GUI.skin.GetStyle("TileCount_text");
+            GUIStyle style = new GUIStyle();
             style.fontSize = Main.Settings.TextSize;
-            style.font = RDString.GetFontDataForLanguage(RDString.language).font;
+            style.font = RDString.GetFontDataForLanguage(SystemLanguage.Korean).font;
             style.normal.textColor = Color.white;
-
-            GUI.Label(new Rect(Main.Settings.PositionX + 10, Main.Settings.PositionY - 10, Screen.width, Screen.height), Content, "TileCount_text");
+    
+            GUI.Label(new Rect(10, -10, Screen.width, Screen.height), Content, style);
         }
     }
 
@@ -24,9 +24,12 @@ namespace TileCount.MainPatch {
                 var TotalTile = (scrController.instance.lm.listFloors.Count - 1);
                 var LeftTile = TotalTile - CurrentTile;
             
-                Text.Content = "남은 타일 수 : " + LeftTile.ToString() + "개\n총 타일 수 : " + TotalTile.ToString() + "개";
+                Text.Content = Main.Settings.TextTemplate
+                    .Replace("<CurrentTile>", CurrentTile.ToString())
+                    .Replace("<LeftTile>", LeftTile.ToString())
+                    .Replace("<TotalTile>", TotalTile.ToString());
             }
-            else Text.Content = "플레이 중이 아님";
+            else Text.Content = Main.Settings.NotPlayingText;
         }
     }
 }
