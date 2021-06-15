@@ -11,7 +11,7 @@ namespace TileCount.MainPatch {
             style.font = RDString.GetFontDataForLanguage(SystemLanguage.Korean).font;
             style.normal.textColor = Color.white;
     
-            GUI.Label(new Rect(10, -10, Screen.width, Screen.height), Content, style);
+            GUI.Label(new Rect(Main.Settings.PositionX + 10, Main.Settings.PositionY - 10, Screen.width, Screen.height), Content, style);
         }
     }
 
