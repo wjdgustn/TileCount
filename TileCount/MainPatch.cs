@@ -32,4 +32,12 @@ namespace TileCount.MainPatch {
             else Text.Content = Main.Settings.NotPlayingText;
         }
     }
+
+    [HarmonyPatch(typeof(scrController), "FailAction")]
+
+    internal static class ChangeTextOnFail {
+        private static void Prefix(scrController __instance) {
+            Text.Content = Main.Settings.NotPlayingText;
+        }
+    }
 }
