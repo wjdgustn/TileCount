@@ -3,12 +3,12 @@ using UnityModManagerNet;
 
 namespace TileCount {
     public class MainSettings : UnityModManager.ModSettings, IDrawable {
-        [Draw("")] public string TextTemplate = "현재 타일 : <CurrentTile>\n남은 타일 수 : <LeftTile>\n총 타일 수 : <TotalTile>";
+        [Draw("")] public string TextTemplate = "현재 타일 : <CurrentTile>개\n남은 타일 수 : <LeftTile>개\n총 타일 수 : <TotalTile>개";
         [Draw("")] public string NotPlayingText = "플레이 중이 아님";
         [Draw("위치 X좌표")] public int PositionX = 0;
         [Draw("위치 Y좌표")] public int PositionY = 0;
         [Draw("글자 크기")] public int TextSize = 50;
-        [Draw("텍스트 그림자")] public bool TextShadow = false;
+        [Draw("텍스트 그림자 진하기(1~100)", Min = 0, Max = 100)] public int TextShadow = 50;
 
         public override void Save(UnityModManager.ModEntry modEntry) {
             Save(this, modEntry);

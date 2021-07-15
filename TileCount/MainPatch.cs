@@ -6,11 +6,11 @@ namespace TileCount.MainPatch {
         public static string Content = "";
         
         void OnGUI() {
-            if (Main.Settings.TextShadow) {
+            if (Main.Settings.TextShadow > 0) {
                 GUIStyle shadow = new GUIStyle();
                 shadow.fontSize = Main.Settings.TextSize;
                 shadow.font = RDString.GetFontDataForLanguage(SystemLanguage.Korean).font;
-                shadow.normal.textColor = Color.black;
+                shadow.normal.textColor = Color.black.WithAlpha((float) Main.Settings.TextShadow / 100);
                 
                 GUI.Label(new Rect(Main.Settings.PositionX + 12, Main.Settings.PositionY - 8, Screen.width, Screen.height), Content, shadow);
             }
