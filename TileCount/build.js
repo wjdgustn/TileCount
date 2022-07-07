@@ -5,14 +5,14 @@ const rimraf = require('rimraf')
 const archiver = require('archiver')
 const info = require('./Info.json')
 const path = require('path')
-const { findSteamAppById } = require('find-steam-app')
+// const { findSteamAppById } = require('find-steam-app')
 
 setImmediate(async () => {
     const args = yargs(process.argv)
 
     rimraf.sync('Release')
 
-    cp.execSync(`chcp 65001 && dotnet "C:\\Program Files\\dotnet\\sdk\\5.0.205\\MSBuild.dll" /p:Configuration=${args.release ? 'Release' : 'Debug'}`)
+    cp.execSync(`chcp 65001 && dotnet "C:\\Users\\Computer\\.dotnet\\sdk\\5.0.402\\MSBuild.dll" /p:Configuration=${args.release ? 'Release' : 'Debug'}`)
 
     fs.mkdirSync('Release')
 
@@ -38,17 +38,13 @@ setImmediate(async () => {
         if(!args.norestart) await cp.exec('taskkill /f /im "a da"*')
 
         setTimeout(async () => {
-            const appPath = await findSteamAppById(977950)
+            // const appPath = await findSteamAppById(977950)
+            const appPath = `D:\\steam\\steamapps\\common\\A Dance of Fire and Ice`;
             const modPath = path.join(appPath, 'Mods', info.Id)
-            const r68ModPath = path.join('D:\\steam\\steamapps\\common\\A Dance of Fire and Ice_r68', 'Mods', info.Id)
             if(!args.norestart) rimraf.sync(modPath)
-            if(!args.norestart) rimraf.sync(r68ModPath)
             if(!args.norestart) fs.mkdirSync(modPath)
-            if(!args.norestart) fs.mkdirSync(r68ModPath)
             fs.copyFileSync(`Release/${info.Id}.dll`, path.join(modPath, info.Id + '.dll'))
             fs.copyFileSync('Release/Info.json', path.join(modPath, 'Info.json'))
-            fs.copyFileSync(`Release/${info.Id}.dll`, path.join(r68ModPath, info.Id + '.dll'))
-            fs.copyFileSync('Release/Info.json', path.join(r68ModPath, 'Info.json'))
 
             if(!args.norestart) try {
                 await cp.exec('explorer steam://rungameid/977950')

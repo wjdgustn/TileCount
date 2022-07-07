@@ -29,8 +29,8 @@ namespace TileCount.MainPatch {
     internal static class ChangeText {
         private static void Prefix(scrController __instance) {
             if (!scrController.instance.paused && scrConductor.instance.isGameWorld) {
-                var CurrentTile = (scrController.instance.currentSeqID);
-                var TotalTile = (scrController.instance.lm.listFloors.Count - 1);
+                var CurrentTile = scrController.instance.currentSeqID;
+                var TotalTile = ADOBase.lm.listFloors.Count - 1;
                 var LeftTile = TotalTile - CurrentTile;
             
                 Text.Content = Main.Settings.TextTemplate
