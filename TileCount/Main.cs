@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using HarmonyLib;
+using System.IO;
 using TileCount.MainPatch;
 using UnityEngine;
 using UnityModManagerNet;
@@ -36,10 +37,31 @@ namespace TileCount {
 
             return true;
         }
+        
+#if DEBUG
+        private static FileSystemWatcher watcher;
+        private static void OnDllChanged(object source, FileSystemEventArgs e) {
+	        Mod.Logger.Log($"{Mod.Info.Id} mod change detected! Reloading...");
+	        watcher.Changed -= OnDllChanged;
+	        watcher.Dispose();
+	        watcher = null;
+	        Mod.GetType().GetMethod("Reload", BindingFlags.NonPublic | BindingFlags.Instance)?.Invoke(Mod, null);
+        }
+#endif
 
         private static void Start() {
             _harmony = new Harmony(Mod.Info.Id);
             _harmony.PatchAll(Assembly.GetExecutingAssembly());
+            
+#if DEBUG
+            watcher = new FileSystemWatcher(Mod.Path);
+            watcher.NotifyFilter = NotifyFilters.LastWrite;
+            watcher.Filter = "*.dll";
+
+            watcher.Changed += OnDllChanged;
+
+            watcher.EnableRaisingEvents = true;
+#endif
 
             text = new GameObject().AddComponent<Text>();
             Object.DontDestroyOnLoad(text);

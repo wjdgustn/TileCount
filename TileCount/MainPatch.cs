@@ -24,7 +24,7 @@ namespace TileCount.MainPatch {
         }
     }
 
-    [HarmonyPatch(typeof(scrController), "PlayerControl_Update")]
+    [HarmonyPatch(typeof(scrController), "Update")]
 
     internal static class ChangeText {
         private static void Prefix(scrController __instance) {

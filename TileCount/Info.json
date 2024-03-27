@@ -2,8 +2,8 @@
   "Id": "TileCount",
   "DisplayName": "TileCount",
   "Author": "HYONSU",
-  "Version": "0.0.9",
+  "Version": "0.0.10",
   "AssemblyName": "TileCount.dll",
   "EntryMethod": "TileCount.Main.Load",
-  "Repository": ""
+  "Repository": "https://bot.adofai.gg/api/mods/TileCount/Repository.json"
 }
