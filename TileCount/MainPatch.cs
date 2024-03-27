@@ -1,4 +1,5 @@
 using HarmonyLib;
+using MonsterLove.StateMachine;
 using UnityEngine;
 
 namespace TileCount.MainPatch {
@@ -24,7 +25,7 @@ namespace TileCount.MainPatch {
         }
     }
 
-    [HarmonyPatch(typeof(scrController), "Update")]
+    [HarmonyPatch(typeof(StateEngine), "Update")]
 
     internal static class ChangeText {
         private static void Prefix(scrController __instance) {
